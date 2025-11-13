@@ -6,7 +6,7 @@
 
 <a
     target="_blank"
-    class="flex justify-center items-center gap-x-2 p-2 w-[350px] bg-(--color-accent1) rounded-lg text-white font-bold"
+    class="flex justify-center items-center text-lg gap-x-2 p-2 w-[320px] xs:w-[350px] bg-(--color-accent1) rounded-lg text-white font-bold transform transition-transform duration-200 hover:scale-105"
     href={link}
 >
     {#if icon}

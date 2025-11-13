@@ -1,5 +1,5 @@
 <script lang="ts">
-    import RyoImage from "$lib/assets/ryo-favicon.png";
+    import RyoImage from "$lib/assets/ryo.jpg";
     import MeImage from "$lib/assets/pixelart.png";
     import Link from "../components/Link.svelte";
     import { Github, Twitter, Linkedin, Globe, Mail } from "@lucide/svelte";
@@ -25,18 +25,24 @@
             <img
                 alt="ryo"
                 src={RyoImage}
-                class="flip-face front h-32 w-32 p-2 border border-[var(--color-accent1)] rounded-full"
+                class="flip-face front h-32 w-32 p-1 border border-[var(--color-accent1)] rounded-full"
             />
             <img
                 alt="me"
                 src={MeImage}
-                class="flip-face back h-32 w-32 p-2 border border-[var(--color-accent1)] rounded-full"
+                class="flip-face back h-32 w-32 p-1 border border-[var(--color-accent1)] rounded-full"
             />
         </div>
     </div>
     <h1 class="text-3xl pt-2 pb-1 font-bold">Konan</h1>
-    <p class="pb-4">
-        Fullstack Developer. Reach out on any of the socials below
+    <p class="pb-4 text-center">
+        Fullstack Developer with tons of skill issues. <a
+            href="https://github.com/GMkonan/flake"
+            target="_blank"
+            class="font-bold hover:text-(--color-accent1)">Nix + Neovim btw</a
+        >
+        <br />
+        Reach out below!
     </p>
     <section class="flex flex-col gap-y-4">
         <Link link={urls.github} name="Github" icon={Github} />
