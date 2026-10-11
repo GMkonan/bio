@@ -84,34 +84,28 @@
 </div>
 
 <style>
-	.bio-page { width: min(100% - 3rem, 480px); margin-inline: auto; }
-	.topbar { display: flex; justify-content: space-between; align-items: center; min-height: 88px; gap: 1rem; }
-	.wordmark { font-size: 0.8125rem; font-weight: 600; }
+	.bio-page { width: min(100% - 2.5rem, 480px); margin-inline: auto; }
+	.topbar { display: flex; justify-content: space-between; align-items: center; min-height: 72px; gap: 1rem; }
+	.wordmark { font-size: 0.75rem; font-weight: 600; }
 	.wordmark span { color: hsl(var(--primary)); }
-	.theme-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid hsl(var(--border)); border-radius: 6px; background: transparent; }
+	.theme-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid hsl(var(--border)); border-radius: 50%; background: transparent; }
 	.theme-toggle:hover { color: hsl(var(--primary)); background: hsl(var(--accent)); }
-	main { padding-top: 2rem; padding-bottom: 2rem; }
-	.intro { margin-bottom: 2rem; }
-	.intro-row { display: flex; align-items: center; gap: 1.25rem; }
+	main { padding-top: 0.5rem; padding-bottom: 2rem; }
+	.intro { margin-bottom: 1.75rem; text-align: center; }
+	.intro-row { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
 	.intro-copy { min-width: 0; }
-	h1 { margin: 0; font-size: clamp(1.3rem, 4vw, 1.75rem); font-weight: 600; line-height: 1.3; letter-spacing: -0.06em; }
+	h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 1.9rem); font-weight: 600; line-height: 1.3; letter-spacing: -0.06em; }
 	h1 span { color: hsl(var(--primary)); }
-	.intro-copy p { margin: 0.5rem 0 0; color: hsl(var(--muted)); font-size: 0.75rem; line-height: 1.8; }
-	.rabbit-holes { margin: 1.25rem 0 0; color: hsl(var(--muted)); font-size: 0.6875rem; line-height: 1.9; }
-	.avatar { display: block; width: 88px; height: 88px; flex-shrink: 0; border: 0; border-radius: 8px; padding: 0; background: transparent; object-fit: cover; perspective: 800px; }
+	.intro-copy p { margin: 0.75rem 0 0; color: hsl(var(--muted)); font-size: 0.8125rem; line-height: 1.8; }
+	.rabbit-holes { margin: 1rem auto 0; max-width: 34ch; color: hsl(var(--muted)); font-size: 0.6875rem; line-height: 1.9; }
+	.avatar { display: block; width: 136px; height: 136px; flex-shrink: 0; border: 2px solid hsl(var(--primary)); border-radius: 50%; padding: 4px; background: hsl(var(--background)); object-fit: cover; perspective: 800px; }
 	.avatar-inner { display: block; position: relative; width: 100%; height: 100%; transition: transform 600ms ease; transform-style: preserve-3d; }
 	.avatar-inner.flipped { transform: rotateY(180deg); }
-	.avatar-face { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 8px; object-fit: cover; backface-visibility: hidden; }
+	.avatar-face { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; backface-visibility: hidden; }
 	.avatar-back { transform: rotateY(180deg); image-rendering: pixelated; }
-	ul { list-style: none; padding: 0; margin: 0; border-top: 1px solid hsl(var(--border)); }
-	footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.25rem 1rem; margin-top: 2rem; color: hsl(var(--muted)); font-size: 0.625rem; }
+	ul { display: grid; gap: 0.75rem; list-style: none; padding: 0; margin: 0; }
+	footer { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.25rem 1rem; margin-top: 1.5rem; color: hsl(var(--muted)); font-size: 0.625rem; text-align: center; }
 	footer p { margin: 0; }
 	footer a { display: inline-flex; align-items: center; min-height: 44px; }
-	@media (max-width: 380px) {
-		.bio-page { width: calc(100% - 2rem); }
-		.intro-row { gap: 0.875rem; }
-		.avatar { width: 72px; height: 72px; }
-		.intro-copy p { font-size: 0.6875rem; }
-		main { padding-top: 1rem; }
-	}
+	@media (max-width: 380px) { .bio-page { width: calc(100% - 2rem); } .avatar { width: 120px; height: 120px; } }
 </style>

@@ -30,3 +30,7 @@ The project retains `adapter-auto`; a local build does not verify any hosting co
 `static/images/ryo.webp` and the PNG favicons are copied from the approved local blog assets. Ryo is from *Bocchi the Rock*; those images remain copyrighted, not relicensed by this repository. Review reuse rights before publication. The original pixel-art portrait in `src/lib/assets/pixelart.png` is preserved, as are pre-existing unused assets.
 
 Fonts are local IBM Plex Mono distributions copied from the blog. See [`static/fonts/IBM-Plex-LICENSE.txt`](static/fonts/IBM-Plex-LICENSE.txt) for the SIL Open Font License. Lucide icons come from the existing `@lucide/svelte` dependency (ISC).
+
+## Centered link-page layout
+
+Circular Ryo/Konan avatar above centered identity text and a single stack of large blue link buttons; no category dividers or QR-code columns. The top-right dark/light toggle stays keyboard-accessible and persistent. Local-only iteration; no deploy performed.

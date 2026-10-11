@@ -20,20 +20,12 @@
 </a>
 
 <style>
-	a {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		width: 100%;
-		min-height: 76px;
-		padding: 0.9rem 0.25rem;
-		border-bottom: 1px solid hsl(var(--border));
-		transition: color 160ms ease, background-color 160ms ease;
-	}
-	a:hover { color: hsl(var(--primary)); background: hsl(var(--accent) / 0.35); }
-	.link-copy { display: grid; flex: 1; min-width: 0; gap: 0.1rem; }
-	.link-copy strong { font-size: 0.9375rem; font-weight: 500; }
-	.link-copy > span { color: hsl(var(--muted)); font-size: 0.6875rem; overflow-wrap: anywhere; }
-	.link-arrow { color: hsl(var(--primary)); font-size: 1rem; }
+	a { display: grid; grid-template-columns: 24px minmax(0, 1fr) 24px; align-items: center; gap: 0.75rem; width: 100%; min-height: 72px; padding: 0.85rem 1.1rem; border: 1px solid hsl(var(--primary) / 0.35); border-radius: 8px; background: hsl(var(--primary)); color: hsl(var(--button-foreground)); transition: transform 160ms ease, filter 160ms ease; }
+	a:hover { filter: brightness(1.08); transform: translateY(-2px); }
+	a:focus-visible { outline: 2px solid hsl(var(--foreground)); outline-offset: 4px; }
+	.link-copy { display: grid; min-width: 0; gap: 0.1rem; text-align: center; }
+	.link-copy strong { font-size: 0.9375rem; font-weight: 600; }
+	.link-copy > span { font-size: 0.625rem; overflow-wrap: anywhere; }
+	.link-arrow { justify-self: end; font-size: 1rem; }
 	.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 </style>

@@ -21,6 +21,7 @@
 
 :root {
 	color-scheme: light;
+	--button-foreground: 0 0% 100%;
 	--background: 216 45% 98%;
 	--foreground: 216 29% 13%;
 	--primary: 218 47% 46%;
@@ -30,6 +31,7 @@
 }
 :root[data-theme="dark"] {
 	color-scheme: dark;
+	--button-foreground: 220 29% 6%;
 	--background: 220 29% 6%;
 	--foreground: 217 42% 89%;
 	--primary: 220 83% 75%;
@@ -40,7 +42,8 @@
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme]) {
 		color-scheme: dark;
-		--background: 220 29% 6%;
+		--button-foreground: 220 29% 6%;
+	--background: 220 29% 6%;
 		--foreground: 217 42% 89%;
 		--primary: 220 83% 75%;
 		--muted: 218 14% 60%;

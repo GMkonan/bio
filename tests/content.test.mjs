@@ -57,3 +57,13 @@ test("avatar is keyboard-operable and animation has a reduced-motion override", 
 	assert.match(await text("src/app.css"), /prefers-reduced-motion: reduce/);
 	assert.match(await text("src/routes/+layout.svelte"), /skip to links/);
 });
+
+test("reference layout has a centered circular portrait and one undivided button stack", async () => {
+	const page = await text("src/routes/+page.svelte");
+	assert.match(page, /flex-direction: column/);
+	assert.match(page, /border-radius: 50%/);
+	assert.match(page, /<nav aria-label="Konan's links">/);
+	assert.doesNotMatch(page, /<h2|<hr|class="(?:category|divider)/);
+	assert.match(page, /aria-label=\{theme === "dark" \? "Switch to light theme"/);
+	assert.match(await text("src/components/Link.svelte"), /min-height: 72px/);
+});
