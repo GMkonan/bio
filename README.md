@@ -1,45 +1,32 @@
-# sv
+# links — konan.md
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A small Svelte 5 / SvelteKit link page, visually aligned with [konan.md](https://gmkonan.dev/).
 
-## Creating a project
+- Same light/dark blue palette, local IBM Plex Mono, rounded Ryo avatar and favicons as the blog.
+- Compact single column with writing, GitHub, Twitter, mail, Ask and Support links. LinkedIn stays removed.
+- Native, keyboard-accessible avatar button flips between Ryo and the existing pixel-art portrait.
+- Theme is applied before paint using `konan-theme`, with system preference and blocked-storage fallbacks. This key is shared by convention, **not synchronized between different domains**.
+- Links remain available without JavaScript; decorative controls appear only when hydrated. Motion respects `prefers-reduced-motion`.
+- No external font, analytics, live profile lookup or background audio requests.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Development
 
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Use the existing installed dependencies and package scripts (the original dependency record is `deno.lock`):
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+bun run dev
+bun run check
+bun run test
+bun run build
+bun run preview
 ```
 
-## Building
+`test` runs dependency-free Node checks for local assets and link/theme contracts. The redesign was also checked in Chromium on desktop/mobile, both themes, keyboard navigation, reduced motion, blocked storage and JavaScript disabled, with axe accessibility checks.
 
-To create a production version of your app:
+The project retains `adapter-auto`; a local build does not verify any hosting configuration. Publication is separate from the blog and has not been performed for this alignment.
 
-```sh
-npm run build
-```
+## Assets
 
-You can preview the production build with `npm run preview`.
+`static/images/ryo.webp` and the PNG favicons are copied from the approved local blog assets. Ryo is from *Bocchi the Rock*; those images remain copyrighted, not relicensed by this repository. Review reuse rights before publication. The original pixel-art portrait in `src/lib/assets/pixelart.png` is preserved, as are pre-existing unused assets.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-
-### Todo
-- [ ] Get current image from twitter to display profile (and maybe favicon)
-- [ ] Make it possible to, when clicking the profile image, display in a flip coin way an image of my github pfp (maybe get it from there too)
-- [ ] make a link component
-- [ ] Put social link icons
+Fonts are local IBM Plex Mono distributions copied from the blog. See [`static/fonts/IBM-Plex-LICENSE.txt`](static/fonts/IBM-Plex-LICENSE.txt) for the SIL Open Font License. Lucide icons come from the existing `@lucide/svelte` dependency (ISC).
