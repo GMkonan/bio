@@ -2,12 +2,14 @@
 	import { onMount } from "svelte";
 	import MeImage from "$lib/assets/pixelart.png";
 	import Link from "../components/Link.svelte";
+	import AniListIcon from "../components/AniListIcon.svelte";
 	import { Github, Twitter, Globe, Mail, MessageCircle, Heart, Sun, Moon } from "@lucide/svelte";
 
 	const site = "https://gmkonan.dev";
 	const socials = [
 		{ name: "Twitter", link: "https://twitter.com/Konantt_", icon: Twitter },
 		{ name: "GitHub", link: "https://github.com/GMkonan", icon: Github },
+		{ name: "AniList", link: "https://anilist.co/user/Konan12/", icon: AniListIcon },
 	];
 	const links = [
 		{ name: "Visit my website", link: `${site}/`, icon: Globe },
@@ -81,7 +83,7 @@
 			{/each}
 		</nav>
 
-		<nav aria-label="Konan's links">
+		<nav class="primary-links" aria-label="Konan's links">
 			<ul>{#each links as link}<li><Link {...link} /></li>{/each}</ul>
 		</nav>
 
@@ -89,20 +91,20 @@
 </div>
 
 <style>
-	.bio-page { width: min(100% - 2.5rem, 480px); margin-inline: auto; }
+	.bio-page { display: flex; flex-direction: column; min-height: 100svh; padding-bottom: clamp(2rem, 6svh, 4rem); width: min(100% - 2.5rem, 480px); margin-inline: auto; }
 	.topbar { display: flex; justify-content: space-between; align-items: center; min-height: 72px; gap: 1rem; }
 	.wordmark { font-size: 0.75rem; font-weight: 600; }
 	.wordmark span { color: hsl(var(--primary)); }
 	.theme-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid hsl(var(--border)); border-radius: 50%; background: transparent; }
 	.theme-toggle:hover { color: hsl(var(--primary)); background: hsl(var(--accent)); }
-	main { padding-top: 0.5rem; padding-bottom: 2rem; }
+	main { flex-shrink: 0; width: 100%; margin-block: auto; padding-block: 1.5rem; }
 	.intro { margin-bottom: 1rem; text-align: center; }
 	.intro-row { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
 	.intro-copy { min-width: 0; }
 	h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 1.9rem); font-weight: 600; line-height: 1.3; letter-spacing: -0.06em; }
 	h1 { color: hsl(var(--primary)); }
 	.intro-copy p { margin: 0.75rem 0 0; color: hsl(var(--muted)); font-size: 0.8125rem; line-height: 1.8; }
-	.socials { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+	.socials { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; }
 	.socials a { display: grid; place-items: center; width: 44px; height: 44px; color: hsl(var(--foreground)); border-radius: 50%; }
 	.socials a:hover { color: hsl(var(--primary)); background: hsl(var(--accent)); }
 	.avatar { display: block; width: 136px; height: 136px; flex-shrink: 0; border: 2px solid hsl(var(--primary)); border-radius: 50%; padding: 4px; background: hsl(var(--background)); object-fit: cover; perspective: 800px; }
@@ -110,6 +112,7 @@
 	.avatar-inner.flipped { transform: rotateY(180deg); }
 	.avatar-face { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; backface-visibility: hidden; }
 	.avatar-back { transform: rotateY(180deg); image-rendering: pixelated; }
-	ul { display: grid; gap: 0.75rem; list-style: none; padding: 0; margin: 0; }
+	.primary-links { max-width: 360px; margin-inline: auto; }
+	ul { display: grid; gap: 0.5rem; list-style: none; padding: 0; margin: 0; }
 	@media (max-width: 380px) { .bio-page { width: calc(100% - 2rem); } .avatar { width: 120px; height: 120px; } }
 </style>

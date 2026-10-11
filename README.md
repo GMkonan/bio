@@ -3,7 +3,7 @@
 A small Svelte 5 / SvelteKit link page, visually aligned with [konan.md](https://gmkonan.dev/).
 
 - Same light/dark blue palette, local IBM Plex Mono, rounded Ryo avatar and favicons as the blog.
-- Centered “Konan” heading and a single subtitle. Twitter/GitHub are icon-only links above four primary buttons: Visit my website, Send me an email, Ask me a question, Support me. No button subtitles or footer. LinkedIn stays removed.
+- Centered “Konan” heading and a single subtitle. Twitter/GitHub/AniList are icon-only links above four primary buttons: Visit my website, Send me an email, Ask me a question, Support me. No button subtitles or footer. LinkedIn stays removed.
 - Native, keyboard-accessible avatar button flips between Ryo and the existing pixel-art portrait.
 - Theme is applied before paint using `konan-theme`, with system preference and blocked-storage fallbacks. This key is shared by convention, **not synchronized between different domains**.
 - Links remain available without JavaScript; decorative controls appear only when hydrated. Motion respects `prefers-reduced-motion`.
@@ -33,4 +33,6 @@ Fonts are local IBM Plex Mono distributions copied from the blog. See [`static/f
 
 ## Centered link-page layout
 
-Circular Ryo/Konan avatar above centered identity text and a single stack of large blue link buttons; no category dividers or QR-code columns. The top-right dark/light toggle stays keyboard-accessible and persistent. Local-only iteration; no deploy performed.
+Content sits slightly above center below the topbar using a 100svh flex column, auto margins and responsive bottom padding (32–64px); short screens scroll naturally instead of cropping controls. Circular Ryo/Konan avatar above centered identity text and a single stack of large blue link buttons; no category dividers or QR-code columns. The top-right dark/light toggle stays keyboard-accessible and persistent. Local-only iteration; no deploy performed.
+
+The four primary buttons are compact (52px tall, up to 360px wide), with 44px social targets above. AniList uses a local inline brand mark from Simple Icons (CC0), not the generic book icon; see `static/images/SOURCES.md`.

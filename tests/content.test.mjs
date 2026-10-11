@@ -32,6 +32,7 @@ test("links use the blog's identity and no LinkedIn", async () => {
 	assert.match(page, /mailto:konan@gmkonan\.dev/);
 	assert.match(page, /https:\/\/github\.com\/GMkonan/);
 	assert.match(page, /https:\/\/twitter\.com\/Konantt_/);
+	assert.ok(page.includes("https://anilist.co/user/Konan12/"));
 	assert.match(page, /\/ask\//);
 	assert.match(page, /\/donate\//);
 	assert.doesNotMatch(page, /linkedin/i);
@@ -62,10 +63,10 @@ test("reference layout has a centered circular portrait and one undivided button
 	const page = await text("src/routes/+page.svelte");
 	assert.match(page, /flex-direction: column/);
 	assert.match(page, /border-radius: 50%/);
-	assert.match(page, /<nav aria-label="Konan's links">/);
+	assert.match(page, /<nav class="primary-links" aria-label="Konan's links">/);
 	assert.doesNotMatch(page, /<h2|<hr|class="(?:category|divider)/);
 	assert.match(page, /aria-label=\{theme === "dark" \? "Switch to light theme"/);
-	assert.match(await text("src/components/Link.svelte"), /min-height: 72px/);
+	assert.match(await text("src/components/Link.svelte"), /min-height: 52px/);
 });
 
 test("simple identity, social icons and four title-only buttons", async () => {
@@ -77,4 +78,31 @@ test("simple identity, social icons and four title-only buttons", async () => {
 	for (const title of ["Visit my website", "Send me an email", "Ask me a question", "Support me"]) assert.ok(page.includes(title));
 	assert.doesNotMatch(page, /<footer|hi, i'm|class="rabbit-holes"|description:/);
 	assert.doesNotMatch(await text("src/components/Link.svelte"), /description|<span>\{description\}/);
+});
+
+test("browser tab names the owner and the links page", async () => {
+	assert.match(await text("src/routes/+layout.svelte"), /<title>Konan — links<\/title>/);
+});
+
+
+test("AniList uses its local brand mark alongside other socials; buttons stay compact", async () => {
+	const page = await text("src/routes/+page.svelte");
+	assert.match(page, /icon: AniListIcon/);
+	assert.doesNotMatch(page, /BookOpen/);
+	assert.match(await text("src/components/AniListIcon.svelte"), /viewBox="0 0 24 24"/);
+	assert.match(await text("src/components/AniListIcon.svelte"), /fill="currentColor"/);
+	assert.match(page, /max-width: 360px/);
+	assert.match(await text("static/images/SOURCES.md"), /Simple Icons, CC0/);
+});
+
+
+test("bio sits slightly above center without a fixed content height", async () => {
+	const page = await text("src/routes/+page.svelte");
+	assert.match(page, /min-height: 100svh/);
+	assert.match(page, /margin-block: auto/);
+	assert.match(page, /padding-bottom: clamp\(2rem, 6svh, 4rem\)/);
+	assert.match(page, /flex-shrink: 0/);
+	const mainStyle = page.match(/\tmain \{([^}]+)\}/)?.[1];
+	assert.ok(mainStyle);
+	assert.doesNotMatch(mainStyle, /position: absolute|overflow: hidden|height:/);
 });

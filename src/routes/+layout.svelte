@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>links — konan.md</title>
+	<title>Konan — links</title>
 	<meta name="description" content="Working with tech. Watching media. Holy skill issues. Find Konan's writing and links." />
 	<meta name="theme-color" content="#0b0e14" media="(prefers-color-scheme: dark)" />
 	<meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
