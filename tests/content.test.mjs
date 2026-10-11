@@ -67,3 +67,14 @@ test("reference layout has a centered circular portrait and one undivided button
 	assert.match(page, /aria-label=\{theme === "dark" \? "Switch to light theme"/);
 	assert.match(await text("src/components/Link.svelte"), /min-height: 72px/);
 });
+
+test("simple identity, social icons and four title-only buttons", async () => {
+	const page = await text("src/routes/+page.svelte");
+	assert.match(page, /<h1 id="intro-heading">Konan<\/h1>/);
+	assert.match(page, /Random Nerd on the internet stuck on multiple rabbit holes\. Check my work, ask me stuff, support me or just talk to me!/);
+	assert.match(page, /aria-label="Social media"/);
+	assert.ok(page.indexOf('class="socials"') < page.indexOf('aria-label="Konan\'s links"'));
+	for (const title of ["Visit my website", "Send me an email", "Ask me a question", "Support me"]) assert.ok(page.includes(title));
+	assert.doesNotMatch(page, /<footer|hi, i'm|class="rabbit-holes"|description:/);
+	assert.doesNotMatch(await text("src/components/Link.svelte"), /description|<span>\{description\}/);
+});

@@ -3,7 +3,7 @@
 A small Svelte 5 / SvelteKit link page, visually aligned with [konan.md](https://gmkonan.dev/).
 
 - Same light/dark blue palette, local IBM Plex Mono, rounded Ryo avatar and favicons as the blog.
-- Compact single column with writing, GitHub, Twitter, mail, Ask and Support links. LinkedIn stays removed.
+- Centered “Konan” heading and a single subtitle. Twitter/GitHub are icon-only links above four primary buttons: Visit my website, Send me an email, Ask me a question, Support me. No button subtitles or footer. LinkedIn stays removed.
 - Native, keyboard-accessible avatar button flips between Ryo and the existing pixel-art portrait.
 - Theme is applied before paint using `konan-theme`, with system preference and blocked-storage fallbacks. This key is shared by convention, **not synchronized between different domains**.
 - Links remain available without JavaScript; decorative controls appear only when hydrated. Motion respects `prefers-reduced-motion`.

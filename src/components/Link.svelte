@@ -5,16 +5,15 @@
 	interface Props {
 		link: string;
 		name: string;
-		description: string;
 		icon: Component<IconProps>;
 		external?: boolean;
 	}
-	let { link, name, description, icon: Icon, external = true }: Props = $props();
+	let { link, name, icon: Icon, external = true }: Props = $props();
 </script>
 
 <a href={link} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
 	<Icon size={20} strokeWidth={1.5} aria-hidden="true" />
-	<span class="link-copy"><strong>{name}</strong><span>{description}</span></span>
+	<span class="link-copy"><strong>{name}</strong></span>
 	<span class="link-arrow" aria-hidden="true">{external ? "↗" : "→"}</span>
 	{#if external}<span class="sr-only"> (opens in a new tab)</span>{/if}
 </a>
@@ -25,7 +24,6 @@
 	a:focus-visible { outline: 2px solid hsl(var(--foreground)); outline-offset: 4px; }
 	.link-copy { display: grid; min-width: 0; gap: 0.1rem; text-align: center; }
 	.link-copy strong { font-size: 0.9375rem; font-weight: 600; }
-	.link-copy > span { font-size: 0.625rem; overflow-wrap: anywhere; }
 	.link-arrow { justify-self: end; font-size: 1rem; }
 	.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 </style>

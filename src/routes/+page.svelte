@@ -5,13 +5,15 @@
 	import { Github, Twitter, Globe, Mail, MessageCircle, Heart, Sun, Moon } from "@lucide/svelte";
 
 	const site = "https://gmkonan.dev";
+	const socials = [
+		{ name: "Twitter", link: "https://twitter.com/Konantt_", icon: Twitter },
+		{ name: "GitHub", link: "https://github.com/GMkonan", icon: Github },
+	];
 	const links = [
-		{ name: "konan.md", description: "writing, rabbit holes & things i like", link: `${site}/`, icon: Globe },
-		{ name: "github", description: "software & questionable experiments", link: "https://github.com/GMkonan", icon: Github },
-		{ name: "twitter", description: "@Konantt_", link: "https://twitter.com/Konantt_", icon: Twitter },
-		{ name: "mail", description: "konan@gmkonan.dev", link: "mailto:konan@gmkonan.dev", icon: Mail, external: false },
-		{ name: "ask", description: "ask me a question. or draw something.", link: `${site}/ask/`, icon: MessageCircle },
-		{ name: "support", description: "support THE idiot", link: `${site}/donate/`, icon: Heart },
+		{ name: "Visit my website", link: `${site}/`, icon: Globe },
+		{ name: "Send me an email", link: "mailto:konan@gmkonan.dev", icon: Mail, external: false },
+		{ name: "Ask me a question", link: `${site}/ask/`, icon: MessageCircle },
+		{ name: "Support me", link: `${site}/donate/`, icon: Heart },
 	];
 
 	let flipped = $state(false);
@@ -65,21 +67,24 @@
 					<img class="avatar" src="/images/ryo.webp" width="320" height="320" alt="Ryo Yamada from Bocchi the Rock" />
 				{/if}
 				<div class="intro-copy">
-					<h1 id="intro-heading">hi, i'm <span>konan.</span></h1>
-					<p>Working with tech. Watching media.<br />Holy skill issues.</p>
+					<h1 id="intro-heading">Konan</h1>
+					<p>Random Nerd on the internet stuck on multiple rabbit holes. Check my work, ask me stuff, support me or just talk to me!</p>
 				</div>
 			</div>
-			<p class="rabbit-holes">Rabbit holes: Nixos, Pi, Home labbing, Ricing</p>
 		</section>
+
+		<nav class="socials" aria-label="Social media">
+			{#each socials as social}
+				<a href={social.link} target="_blank" rel="noopener noreferrer" aria-label={`${social.name} (opens in a new tab)`} title={social.name}>
+					<social.icon size={22} strokeWidth={1.5} aria-hidden="true" />
+				</a>
+			{/each}
+		</nav>
 
 		<nav aria-label="Konan's links">
 			<ul>{#each links as link}<li><Link {...link} /></li>{/each}</ul>
 		</nav>
 
-		<footer>
-			<p>built slowly. updated irregularly.</p>
-			<a class="text-link" href={`${site}/whoami/`}>about me</a>
-		</footer>
 	</main>
 </div>
 
@@ -91,21 +96,20 @@
 	.theme-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid hsl(var(--border)); border-radius: 50%; background: transparent; }
 	.theme-toggle:hover { color: hsl(var(--primary)); background: hsl(var(--accent)); }
 	main { padding-top: 0.5rem; padding-bottom: 2rem; }
-	.intro { margin-bottom: 1.75rem; text-align: center; }
+	.intro { margin-bottom: 1rem; text-align: center; }
 	.intro-row { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
 	.intro-copy { min-width: 0; }
 	h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 1.9rem); font-weight: 600; line-height: 1.3; letter-spacing: -0.06em; }
-	h1 span { color: hsl(var(--primary)); }
+	h1 { color: hsl(var(--primary)); }
 	.intro-copy p { margin: 0.75rem 0 0; color: hsl(var(--muted)); font-size: 0.8125rem; line-height: 1.8; }
-	.rabbit-holes { margin: 1rem auto 0; max-width: 34ch; color: hsl(var(--muted)); font-size: 0.6875rem; line-height: 1.9; }
+	.socials { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+	.socials a { display: grid; place-items: center; width: 44px; height: 44px; color: hsl(var(--foreground)); border-radius: 50%; }
+	.socials a:hover { color: hsl(var(--primary)); background: hsl(var(--accent)); }
 	.avatar { display: block; width: 136px; height: 136px; flex-shrink: 0; border: 2px solid hsl(var(--primary)); border-radius: 50%; padding: 4px; background: hsl(var(--background)); object-fit: cover; perspective: 800px; }
 	.avatar-inner { display: block; position: relative; width: 100%; height: 100%; transition: transform 600ms ease; transform-style: preserve-3d; }
 	.avatar-inner.flipped { transform: rotateY(180deg); }
 	.avatar-face { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; backface-visibility: hidden; }
 	.avatar-back { transform: rotateY(180deg); image-rendering: pixelated; }
 	ul { display: grid; gap: 0.75rem; list-style: none; padding: 0; margin: 0; }
-	footer { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.25rem 1rem; margin-top: 1.5rem; color: hsl(var(--muted)); font-size: 0.625rem; text-align: center; }
-	footer p { margin: 0; }
-	footer a { display: inline-flex; align-items: center; min-height: 44px; }
 	@media (max-width: 380px) { .bio-page { width: calc(100% - 2rem); } .avatar { width: 120px; height: 120px; } }
 </style>
